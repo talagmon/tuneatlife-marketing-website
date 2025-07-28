@@ -1,13 +1,273 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuneAtLife - AI-Powered Wellness Coaching | Transform Your Health</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        [dir="rtl"] { direction: rtl; }
+        [dir="ltr"] { direction: ltr; }
+        .gradient-bg { background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="/" class="flex items-center">
+                    <span class="text-2xl font-bold text-teal-600">TuneAtLife</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-sm font-medium text-teal-600 border-b-2 border-teal-600">Home</a>
+                    <a href="/experts" class="text-sm font-medium text-gray-700 hover:text-teal-600">Experts</a>
+                    <a href="/blog" class="text-sm font-medium text-gray-700 hover:text-teal-600">Blog</a>
+                    <a href="/dashboard" class="text-sm font-medium text-gray-700 hover:text-teal-600">Dashboard</a>
+                </div>
+
+                <!-- Language Toggle and Auth -->
+                <div class="flex items-center space-x-4">
+                    <button id="langToggle" class="flex items-center gap-2 px-3 py-1 text-sm font-medium text-gray-700 hover:text-teal-600 border border-gray-300 rounded-md">
+                        🌐 <span id="langText">עברית</span>
+                    </button>
+                    <a href="/auth" class="bg-teal-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-teal-700 transition-colors">
+                        <span id="loginText">Login</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden border-t border-gray-200">
+            <div class="px-4 py-3 space-y-2">
+                <a href="/" class="block px-3 py-2 text-sm font-medium rounded-md bg-teal-50 text-teal-600">Home</a>
+                <a href="/experts" class="block px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-50">Experts</a>
+                <a href="/blog" class="block px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-50">Blog</a>
+                <a href="/dashboard" class="block px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-50">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6" id="heroTitle">
+                    TuneAtLife
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-teal-100" id="heroSubtitle">
+                    AI-Powered Wellness Coaching for a Healthier You
+                </p>
+                <p class="text-lg mb-12 max-w-3xl mx-auto text-teal-50" id="heroDescription">
+                    Experience personalized health coaching with cultural intelligence, advanced AI experts, and smart nutrition guidance tailored to your lifestyle.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="startJourney()" class="bg-white text-teal-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+                        <span id="startButton">Start Your Journey</span>
+                    </button>
+                    <button onclick="learnMore()" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-teal-600 transition-colors">
+                        <span id="learnButton">Learn More</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="featuresTitle">
+                        Your AI Wellness Experts
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto" id="featuresDescription">
+                        Meet our Hebrew-speaking AI experts ready to guide your wellness journey
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Nutritionist -->
+                    <div class="bg-gray-50 rounded-xl p-8 text-center">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">👩‍⚕️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Dr. Sarah Cohen</h3>
+                        <p class="text-green-600 font-medium mb-3">Clinical Nutritionist</p>
+                        <p class="text-gray-600">Personalized nutrition plans with cultural sensitivity and Hebrew guidance</p>
+                    </div>
+
+                    <!-- Fitness Trainer -->
+                    <div class="bg-gray-50 rounded-xl p-8 text-center">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">💪</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Coach David Levy</h3>
+                        <p class="text-blue-600 font-medium mb-3">Fitness Trainer</p>
+                        <p class="text-gray-600">Customized workout plans and motivation in Hebrew for all fitness levels</p>
+                    </div>
+
+                    <!-- Mental Health -->
+                    <div class="bg-gray-50 rounded-xl p-8 text-center">
+                        <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">🧘‍♀️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Dr. Rachel Goldberg</h3>
+                        <p class="text-purple-600 font-medium mb-3">Mental Health Counselor</p>
+                        <p class="text-gray-600">Mindfulness and stress management with Hebrew cultural understanding</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8" id="aboutTitle">
+                        About TuneAtLife
+                    </h2>
+                    <div class="bg-white rounded-xl p-8 shadow-sm">
+                        <p class="text-lg text-gray-700 mb-6" id="aboutDescription">
+                            TuneAtLife is a product developed and operated by SIX ELEMENTS ALTIORA LTD, a company registered in Israel (Company Number: 516301520), dedicated to making personalized wellness coaching accessible to everyone.
+                        </p>
+                        <p class="text-gray-600 mb-4" id="aboutMission">
+                            Our mission is to transform health and wellness through innovative AI technology, providing culturally intelligent coaching that respects and understands diverse backgrounds and lifestyles.
+                        </p>
+                        <div class="border-t border-gray-200 pt-6 mt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4" id="contactTitle">Contact Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                                <div>
+                                    <p><strong>Company:</strong> SIX ELEMENTS ALTIORA LTD</p>
+                                    <p><strong>Registration:</strong> Israel Company Number 516301520</p>
+                                </div>
+                                <div>
+                                    <p><strong>Product:</strong> TuneAtLife Wellness Platform</p>
+                                    <p><strong>Support:</strong> <a href="mailto:support@tuneatlife.com" class="text-teal-600 hover:text-teal-700">support@tuneatlife.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">TuneAtLife</h3>
+                    <p class="text-gray-300 mb-4" id="footerDescription">
+                        AI-powered wellness coaching for a healthier, happier you.
+                    </p>
+                    <button id="footerLangToggle" class="flex items-center gap-2 px-3 py-1 text-sm font-medium text-gray-300 hover:text-white border border-gray-600 rounded-md">
+                        🌐 <span id="footerLangText">עברית</span>
+                    </button>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4" id="quickLinksTitle">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/experts" class="text-gray-300 hover:text-white">Experts</a></li>
+                        <li><a href="/blog" class="text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="/dashboard" class="text-gray-300 hover:text-white">Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4" id="supportTitle">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 SIX ELEMENTS ALTIORA LTD (TuneAtLife). <span id="rightsText">All Rights Reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        let currentLang = 'en';
+        
+        const translations = {
+            en: {
+                heroTitle: 'TuneAtLife',
+                heroSubtitle: 'AI-Powered Wellness Coaching for a Healthier You',
+                heroDescription: 'Experience personalized health coaching with cultural intelligence, advanced AI experts, and smart nutrition guidance tailored to your lifestyle.',
+                startButton: 'Start Your Journey',
+                learnButton: 'Learn More',
+                featuresTitle: 'Your AI Wellness Experts',
+                featuresDescription: 'Meet our Hebrew-speaking AI experts ready to guide your wellness journey',
+                footerDescription: 'AI-powered wellness coaching for a healthier, happier you.',
+                quickLinksTitle: 'Quick Links',
+                supportTitle: 'Support',
+                rightsText: 'All Rights Reserved.',
+                aboutTitle: 'About TuneAtLife',
+                aboutDescription: 'TuneAtLife is a product developed and operated by SIX ELEMENTS ALTIORA LTD, a company registered in Israel (Company Number: 516301520), dedicated to making personalized wellness coaching accessible to everyone.',
+                aboutMission: 'Our mission is to transform health and wellness through innovative AI technology, providing culturally intelligent coaching that respects and understands diverse backgrounds and lifestyles.',
+                contactTitle: 'Contact Information',
+                langText: 'עברית',
+                loginText: 'Login'
+            },
+            he: {
+                heroTitle: 'TuneAtLife',
+                heroSubtitle: 'אימון בריאות מונע על ידי בינה מלאכותית לחיים בריאים יותר',
+                heroDescription: 'חוו אימון בריאות מותאם אישית עם אינטליגנציה תרבותית, מומחי בינה מלאכותית מתקדמים והדרכת תזונה חכמה המותאמת לאורח החיים שלכם.',
+                startButton: 'התחילו את המסע שלכם',
+                learnButton: 'למדו עוד',
+                featuresTitle: 'מומחי הבריאות שלכם',
+                featuresDescription: 'הכירו את מומחי הבינה המלאכותית דוברי העברית שלנו המוכנים להדריך את מסע הבריאות שלכם',
+                footerDescription: 'אימון בריאות מונע על ידי בינה מלאכותית לחיים בריאים ומאושרים יותר.',
+                quickLinksTitle: 'קישורים מהירים',
+                supportTitle: 'תמיכה',
+                rightsText: 'כל הזכויות שמורות.',
+                aboutTitle: 'אודות TuneAtLife',
+                aboutDescription: 'TuneAtLife הוא מוצר שפותח ומופעל על ידי SIX ELEMENTS ALTIORA LTD, חברה רשומה בישראל (מספר חברה: 516301520), המוקדשת להנגשת אימון בריאות מותאם אישית לכולם.',
+                aboutMission: 'המשימה שלנו היא לשנות את עולם הבריאות והרווחה באמצעות טכנולוגיית בינה מלאכותית חדשנית, המספקת אימון תרבותי חכם המכבד ומבין רקעים ואורחות חיים מגוונים.',
+                contactTitle: 'פרטי התקשרות',
+                langText: 'English',
+                loginText: 'התחברות'
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'he' : 'en';
+            const html = document.documentElement;
+            html.lang = currentLang;
+            html.dir = currentLang === 'he' ? 'rtl' : 'ltr';
+            
+            // Update all text elements
+            Object.keys(translations[currentLang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        function startJourney() {
+            window.location.href = '/auth';
+        }
+
+        function learnMore() {
+            window.location.href = '/experts';
+        }
+
+        // Event listeners
+        document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+        document.getElementById('footerLangToggle').addEventListener('click', toggleLanguage);
+    </script>
+</body>
 </html>
+
